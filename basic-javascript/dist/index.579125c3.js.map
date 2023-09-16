@@ -1,1 +1,0 @@
-{"mappings":"AAAA,MAAM,IAAI;AACV,SAAS,SAAS,cAAc;AAChC,OAAO,cAAc","sources":["src/index.js"],"sourcesContent":["const x = require()\nheader = document.querySelector('h1');\nheader.textContent = 'Hello World!';"],"names":[],"version":3,"file":"index.579125c3.js.map","sourceRoot":"/__parcel_source_root/"}

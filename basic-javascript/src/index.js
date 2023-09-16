@@ -43,14 +43,20 @@ const start = async () => {
              * from /faces endpoint.
              * see https://docs.diarupt.ai/api-reference/resources/get-profiles
              *  */
-            profile: 'default',
+            profile: 'interviewer',
             /**
              * full list of available faces can be retrieve 
              * from /faces endpoint.
              * see https://docs.diarupt.ai/api-reference/resources/get-faces
              *  */
-            face: 'obama',
-            context: 'Teach user everything you know about programmable matter',
+            face: 'john_ext',
+            context: 
+`Company Name is Diarupt AI, 
+Candidate Name is Marvin,
+Role is Senior Software Engineer,
+Required Skills include Python & Javascript,
+Focus of Interview is to Guage Candidates  Level.
+Your Name is Sarah`,
         }
 
         // see API docs at https://docs.diarupt.ai/api-reference

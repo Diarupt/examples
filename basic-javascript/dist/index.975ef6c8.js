@@ -607,13 +607,18 @@ const start = async ()=>{
              * full list of available profiles can be retrieve 
              * from /faces endpoint.
              * see https://docs.diarupt.ai/api-reference/resources/get-profiles
-             *  */ profile: "default",
+             *  */ profile: "interviewer",
             /**
              * full list of available faces can be retrieve 
              * from /faces endpoint.
              * see https://docs.diarupt.ai/api-reference/resources/get-faces
-             *  */ face: "obama",
-            context: "Teach user everything you know about programmable matter"
+             *  */ face: "john_ext",
+            context: `Company Name is Diarupt AI, 
+Candidate Name is Marvin,
+Role is Senior Software Engineer,
+Required Skills include Python & Javascript,
+Focus of Interview is to Guage Candidates  Level.
+Your Name is Sarah`
         };
         // see API docs at https://docs.diarupt.ai/api-reference
         const res = await axios.post(DIARUPT_API + "/create-session", options, {
@@ -660,7 +665,7 @@ const stop = ()=>{
 };
 btn.addEventListener("click", start);
 
-},{"2b5f8dba2d556015":"aLCdn","a4df52acf03d00cd":"1UgFI"}],"aLCdn":[function(require,module,exports) {
+},{"2b5f8dba2d556015":"g8kvJ","a4df52acf03d00cd":"1UgFI"}],"g8kvJ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "connect", ()=>O);
@@ -701,7 +706,7 @@ var y = async ({ timeslice: t, stream: r }, n)=>{
                 video: !1,
                 stream: r
             }, (l)=>{
-                l instanceof Blob && c.readyState === 1 && c.send(l);
+                l instanceof Blob && c.send(l);
             });
         }, c.onmessage = (l)=>{
             let m = JSON.parse(l.data), u = m?.channel?.alternatives?.[0]?.transcript;
