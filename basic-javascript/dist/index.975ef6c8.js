@@ -665,7 +665,7 @@ const stop = ()=>{
 };
 btn.addEventListener("click", start);
 
-},{"2b5f8dba2d556015":"g8kvJ","a4df52acf03d00cd":"1UgFI"}],"g8kvJ":[function(require,module,exports) {
+},{"2b5f8dba2d556015":"3UMym","a4df52acf03d00cd":"jo6P5"}],"3UMym":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "connect", ()=>O);
@@ -706,7 +706,7 @@ var y = async ({ timeslice: t, stream: r }, n)=>{
                 video: !1,
                 stream: r
             }, (l)=>{
-                l instanceof Blob && c.send(l);
+                l instanceof Blob && c.readyState === 1 && c.send(l);
             });
         }, c.onmessage = (l)=>{
             let m = JSON.parse(l.data), u = m?.channel?.alternatives?.[0]?.transcript;
@@ -892,7 +892,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"1UgFI":[function(require,module,exports) {
+},{}],"jo6P5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
@@ -910,15 +910,16 @@ parcelHelpers.export(exports, "toFormData", ()=>toFormData);
 parcelHelpers.export(exports, "AxiosHeaders", ()=>AxiosHeaders);
 parcelHelpers.export(exports, "HttpStatusCode", ()=>HttpStatusCode);
 parcelHelpers.export(exports, "formToJSON", ()=>formToJSON);
+parcelHelpers.export(exports, "getAdapter", ()=>getAdapter);
 parcelHelpers.export(exports, "mergeConfig", ()=>mergeConfig);
 var _axiosJs = require("./lib/axios.js");
 var _axiosJsDefault = parcelHelpers.interopDefault(_axiosJs);
 // This module is intended to unwrap Axios default export as named.
 // Keep top-level export same with static properties
 // so that it can keep same with es module or cjs
-const { Axios, AxiosError, CanceledError, isCancel, CancelToken, VERSION, all, Cancel, isAxiosError, spread, toFormData, AxiosHeaders, HttpStatusCode, formToJSON, mergeConfig } = (0, _axiosJsDefault.default);
+const { Axios, AxiosError, CanceledError, isCancel, CancelToken, VERSION, all, Cancel, isAxiosError, spread, toFormData, AxiosHeaders, HttpStatusCode, formToJSON, getAdapter, mergeConfig } = (0, _axiosJsDefault.default);
 
-},{"./lib/axios.js":"8Pn1N","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8Pn1N":[function(require,module,exports) {
+},{"./lib/axios.js":"63MyY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"63MyY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./utils.js");
@@ -950,6 +951,8 @@ var _isAxiosErrorJs = require("./helpers/isAxiosError.js");
 var _isAxiosErrorJsDefault = parcelHelpers.interopDefault(_isAxiosErrorJs);
 var _axiosHeadersJs = require("./core/AxiosHeaders.js");
 var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+var _adaptersJs = require("./adapters/adapters.js");
+var _adaptersJsDefault = parcelHelpers.interopDefault(_adaptersJs);
 var _httpStatusCodeJs = require("./helpers/HttpStatusCode.js");
 var _httpStatusCodeJsDefault = parcelHelpers.interopDefault(_httpStatusCodeJs);
 "use strict";
@@ -1001,12 +1004,13 @@ axios.isAxiosError = (0, _isAxiosErrorJsDefault.default);
 axios.mergeConfig = (0, _mergeConfigJsDefault.default);
 axios.AxiosHeaders = (0, _axiosHeadersJsDefault.default);
 axios.formToJSON = (thing)=>(0, _formDataToJSONJsDefault.default)((0, _utilsJsDefault.default).isHTMLForm(thing) ? new FormData(thing) : thing);
+axios.getAdapter = (0, _adaptersJsDefault.default).getAdapter;
 axios.HttpStatusCode = (0, _httpStatusCodeJsDefault.default);
 axios.default = axios;
 // this module should only have a default export
 exports.default = axios;
 
-},{"./utils.js":"8iYhQ","./helpers/bind.js":"gfbF3","./core/Axios.js":"eDd69","./core/mergeConfig.js":"knuEM","./defaults/index.js":"kzm78","./helpers/formDataToJSON.js":"3AcxK","./cancel/CanceledError.js":"3EbmH","./cancel/CancelToken.js":"9aT1c","./cancel/isCancel.js":"idWPs","./env/data.js":"5Nrdw","./helpers/toFormData.js":"aCcLy","./core/AxiosError.js":"lAedo","./helpers/spread.js":"8OQwS","./helpers/isAxiosError.js":"2gw1T","./core/AxiosHeaders.js":"ak5DP","./helpers/HttpStatusCode.js":"0fvB3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8iYhQ":[function(require,module,exports) {
+},{"./utils.js":"5By4s","./helpers/bind.js":"haRQb","./core/Axios.js":"cpqD8","./core/mergeConfig.js":"b85oP","./defaults/index.js":"hXfHM","./helpers/formDataToJSON.js":"01RfH","./cancel/CanceledError.js":"9PwCG","./cancel/CancelToken.js":"45wzn","./cancel/isCancel.js":"a0VmF","./env/data.js":"h29L9","./helpers/toFormData.js":"ajoez","./core/AxiosError.js":"3u8Tl","./helpers/spread.js":"dyQ8N","./helpers/isAxiosError.js":"eyiLq","./core/AxiosHeaders.js":"cgSSx","./adapters/adapters.js":"d7JxI","./helpers/HttpStatusCode.js":"fdR61","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5By4s":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _bindJs = require("./helpers/bind.js");
@@ -1418,7 +1422,8 @@ const reduceDescriptors = (obj, reducer)=>{
     const descriptors = Object.getOwnPropertyDescriptors(obj);
     const reducedDescriptors = {};
     forEach(descriptors, (descriptor, name)=>{
-        if (reducer(descriptor, name, obj) !== false) reducedDescriptors[name] = descriptor;
+        let ret;
+        if ((ret = reducer(descriptor, name, obj)) !== false) reducedDescriptors[name] = ret || descriptor;
     });
     Object.defineProperties(obj, reducedDescriptors);
 };
@@ -1558,7 +1563,7 @@ exports.default = {
     isThenable
 };
 
-},{"./helpers/bind.js":"gfbF3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gfbF3":[function(require,module,exports) {
+},{"./helpers/bind.js":"haRQb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"haRQb":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>bind);
@@ -1569,7 +1574,7 @@ function bind(fn, thisArg) {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eDd69":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cpqD8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./../utils.js");
@@ -1635,10 +1640,9 @@ const validators = (0, _validatorJsDefault.default).validators;
         }
         // Set config.method
         config.method = (config.method || this.defaults.method || "get").toLowerCase();
-        let contextHeaders;
         // Flatten headers
-        contextHeaders = headers && (0, _utilsJsDefault.default).merge(headers.common, headers[config.method]);
-        contextHeaders && (0, _utilsJsDefault.default).forEach([
+        let contextHeaders = headers && (0, _utilsJsDefault.default).merge(headers.common, headers[config.method]);
+        headers && (0, _utilsJsDefault.default).forEach([
             "delete",
             "get",
             "head",
@@ -1743,7 +1747,7 @@ const validators = (0, _validatorJsDefault.default).validators;
 });
 exports.default = Axios;
 
-},{"./../utils.js":"8iYhQ","../helpers/buildURL.js":"1NZ5w","./InterceptorManager.js":"8M0vO","./dispatchRequest.js":"9enHy","./mergeConfig.js":"knuEM","./buildFullPath.js":"ep9XH","../helpers/validator.js":"iuFRD","./AxiosHeaders.js":"ak5DP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1NZ5w":[function(require,module,exports) {
+},{"./../utils.js":"5By4s","../helpers/buildURL.js":"3bwC2","./InterceptorManager.js":"1VRIM","./dispatchRequest.js":"6sjJ6","./mergeConfig.js":"b85oP","./buildFullPath.js":"1I5TW","../helpers/validator.js":"9vgkY","./AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3bwC2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>buildURL);
@@ -1777,7 +1781,7 @@ function buildURL(url, params, options) {
     return url;
 }
 
-},{"../utils.js":"8iYhQ","../helpers/AxiosURLSearchParams.js":"4mo46","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4mo46":[function(require,module,exports) {
+},{"../utils.js":"5By4s","../helpers/AxiosURLSearchParams.js":"hz84m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hz84m":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _toFormDataJs = require("./toFormData.js");
@@ -1832,7 +1836,7 @@ prototype.toString = function toString(encoder) {
 };
 exports.default = AxiosURLSearchParams;
 
-},{"./toFormData.js":"aCcLy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aCcLy":[function(require,module,exports) {
+},{"./toFormData.js":"ajoez","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ajoez":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("../utils.js");
@@ -1842,7 +1846,7 @@ var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
 // temporary hotfix to avoid circular references until AxiosURLSearchParams is refactored
 var _formDataJs = require("../platform/node/classes/FormData.js");
 var _formDataJsDefault = parcelHelpers.interopDefault(_formDataJs);
-var Buffer = require("709d46ab5bddbcd5").Buffer;
+var Buffer = require("adfd9b103875c2dd").Buffer;
 "use strict";
 /**
  * Determines if the given thing is a array or js object.
@@ -1997,7 +2001,7 @@ const predicates = (0, _utilsJsDefault.default).toFlatObject((0, _utilsJsDefault
 }
 exports.default = toFormData;
 
-},{"709d46ab5bddbcd5":"1mZL9","../utils.js":"8iYhQ","../core/AxiosError.js":"lAedo","../platform/node/classes/FormData.js":"h6tfk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1mZL9":[function(require,module,exports) {
+},{"adfd9b103875c2dd":"1mZL9","../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","../platform/node/classes/FormData.js":"aFlee","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1mZL9":[function(require,module,exports) {
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -3397,7 +3401,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
     buffer[offset + i - d] |= s * 128;
 };
 
-},{}],"lAedo":[function(require,module,exports) {
+},{}],"3u8Tl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("../utils.js");
@@ -3485,13 +3489,13 @@ AxiosError.from = (error, code, config, request, response, customProps)=>{
 };
 exports.default = AxiosError;
 
-},{"../utils.js":"8iYhQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h6tfk":[function(require,module,exports) {
+},{"../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aFlee":[function(require,module,exports) {
 // eslint-disable-next-line strict
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = null;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8M0vO":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1VRIM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./../utils.js");
@@ -3550,7 +3554,7 @@ class InterceptorManager {
 }
 exports.default = InterceptorManager;
 
-},{"./../utils.js":"8iYhQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9enHy":[function(require,module,exports) {
+},{"./../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6sjJ6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>dispatchRequest);
@@ -3607,7 +3611,7 @@ function dispatchRequest(config) {
     });
 }
 
-},{"./transformData.js":"C99Xh","../cancel/isCancel.js":"idWPs","../defaults/index.js":"kzm78","../cancel/CanceledError.js":"3EbmH","../core/AxiosHeaders.js":"ak5DP","../adapters/adapters.js":"655hC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"C99Xh":[function(require,module,exports) {
+},{"./transformData.js":"eRqJY","../cancel/isCancel.js":"a0VmF","../defaults/index.js":"hXfHM","../cancel/CanceledError.js":"9PwCG","../core/AxiosHeaders.js":"cgSSx","../adapters/adapters.js":"d7JxI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eRqJY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>transformData);
@@ -3630,7 +3634,7 @@ function transformData(fns, response) {
     return data;
 }
 
-},{"./../utils.js":"8iYhQ","../defaults/index.js":"kzm78","../core/AxiosHeaders.js":"ak5DP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kzm78":[function(require,module,exports) {
+},{"./../utils.js":"5By4s","../defaults/index.js":"hXfHM","../core/AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hXfHM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("../utils.js");
@@ -3648,9 +3652,6 @@ var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
 var _formDataToJSONJs = require("../helpers/formDataToJSON.js");
 var _formDataToJSONJsDefault = parcelHelpers.interopDefault(_formDataToJSONJs);
 "use strict";
-const DEFAULT_CONTENT_TYPE = {
-    "Content-Type": undefined
-};
 /**
  * It takes a string, tries to parse it, and if it fails, it returns the stringified version
  * of the input
@@ -3671,10 +3672,7 @@ const DEFAULT_CONTENT_TYPE = {
 }
 const defaults = {
     transitional: (0, _transitionalJsDefault.default),
-    adapter: [
-        "xhr",
-        "http"
-    ],
+    adapter: (0, _indexJsDefault.default).isNode ? "http" : "xhr",
     transformRequest: [
         function transformRequest(data, headers) {
             const contentType = headers.getContentType() || "";
@@ -3746,27 +3744,24 @@ const defaults = {
     },
     headers: {
         common: {
-            "Accept": "application/json, text/plain, */*"
+            "Accept": "application/json, text/plain, */*",
+            "Content-Type": undefined
         }
     }
 };
 (0, _utilsJsDefault.default).forEach([
     "delete",
     "get",
-    "head"
-], function forEachMethodNoData(method) {
-    defaults.headers[method] = {};
-});
-(0, _utilsJsDefault.default).forEach([
+    "head",
     "post",
     "put",
     "patch"
-], function forEachMethodWithData(method) {
-    defaults.headers[method] = (0, _utilsJsDefault.default).merge(DEFAULT_CONTENT_TYPE);
+], (method)=>{
+    defaults.headers[method] = {};
 });
 exports.default = defaults;
 
-},{"../utils.js":"8iYhQ","../core/AxiosError.js":"lAedo","./transitional.js":"h7kye","../helpers/toFormData.js":"aCcLy","../helpers/toURLEncodedForm.js":"gnxxC","../platform/index.js":"gU7QQ","../helpers/formDataToJSON.js":"3AcxK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h7kye":[function(require,module,exports) {
+},{"../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","./transitional.js":"lM32f","../helpers/toFormData.js":"ajoez","../helpers/toURLEncodedForm.js":"9hjry","../platform/index.js":"7tDev","../helpers/formDataToJSON.js":"01RfH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lM32f":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 "use strict";
@@ -3776,7 +3771,7 @@ exports.default = {
     clarifyTimeoutError: false
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gnxxC":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9hjry":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>toURLEncodedForm);
@@ -3799,14 +3794,14 @@ function toURLEncodedForm(data, options) {
     }, options));
 }
 
-},{"../utils.js":"8iYhQ","./toFormData.js":"aCcLy","../platform/index.js":"gU7QQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gU7QQ":[function(require,module,exports) {
+},{"../utils.js":"5By4s","./toFormData.js":"ajoez","../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7tDev":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _indexJsDefault.default));
 var _indexJs = require("./node/index.js");
 var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
 
-},{"./node/index.js":"7yvvG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7yvvG":[function(require,module,exports) {
+},{"./node/index.js":"cVeqE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cVeqE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _urlsearchParamsJs = require("./classes/URLSearchParams.js");
@@ -3867,7 +3862,7 @@ exports.default = {
     ]
 };
 
-},{"./classes/URLSearchParams.js":"kEbfV","./classes/FormData.js":"bIKP2","./classes/Blob.js":"akGJD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kEbfV":[function(require,module,exports) {
+},{"./classes/URLSearchParams.js":"5cIHE","./classes/FormData.js":"7i1jd","./classes/Blob.js":"8chF6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5cIHE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _axiosURLSearchParamsJs = require("../../../helpers/AxiosURLSearchParams.js");
@@ -3875,19 +3870,19 @@ var _axiosURLSearchParamsJsDefault = parcelHelpers.interopDefault(_axiosURLSearc
 "use strict";
 exports.default = typeof URLSearchParams !== "undefined" ? URLSearchParams : (0, _axiosURLSearchParamsJsDefault.default);
 
-},{"../../../helpers/AxiosURLSearchParams.js":"4mo46","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bIKP2":[function(require,module,exports) {
+},{"../../../helpers/AxiosURLSearchParams.js":"hz84m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7i1jd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 "use strict";
 exports.default = typeof FormData !== "undefined" ? FormData : null;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"akGJD":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8chF6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 "use strict";
 exports.default = typeof Blob !== "undefined" ? Blob : null;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3AcxK":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"01RfH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("../utils.js");
@@ -3962,7 +3957,7 @@ var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
 }
 exports.default = formDataToJSON;
 
-},{"../utils.js":"8iYhQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ak5DP":[function(require,module,exports) {
+},{"../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cgSSx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("../utils.js");
@@ -4152,11 +4147,20 @@ AxiosHeaders.accessor([
     "User-Agent",
     "Authorization"
 ]);
-(0, _utilsJsDefault.default).freezeMethods(AxiosHeaders.prototype);
+// reserved names hotfix
+(0, _utilsJsDefault.default).reduceDescriptors(AxiosHeaders.prototype, ({ value }, key)=>{
+    let mapped = key[0].toUpperCase() + key.slice(1); // map `set` => `Set`
+    return {
+        get: ()=>value,
+        set (headerValue) {
+            this[mapped] = headerValue;
+        }
+    };
+});
 (0, _utilsJsDefault.default).freezeMethods(AxiosHeaders);
 exports.default = AxiosHeaders;
 
-},{"../utils.js":"8iYhQ","../helpers/parseHeaders.js":"bufCW","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bufCW":[function(require,module,exports) {
+},{"../utils.js":"5By4s","../helpers/parseHeaders.js":"kqDd5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kqDd5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./../utils.js");
@@ -4216,7 +4220,7 @@ const ignoreDuplicateOf = (0, _utilsJsDefault.default).toObjectSet([
     return parsed;
 };
 
-},{"./../utils.js":"8iYhQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"idWPs":[function(require,module,exports) {
+},{"./../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"a0VmF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>isCancel);
@@ -4225,7 +4229,7 @@ function isCancel(value) {
     return !!(value && value.__CANCEL__);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3EbmH":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9PwCG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _axiosErrorJs = require("../core/AxiosError.js");
@@ -4251,7 +4255,7 @@ var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
 });
 exports.default = CanceledError;
 
-},{"../core/AxiosError.js":"lAedo","../utils.js":"8iYhQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"655hC":[function(require,module,exports) {
+},{"../core/AxiosError.js":"3u8Tl","../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d7JxI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("../utils.js");
@@ -4302,7 +4306,7 @@ exports.default = {
     adapters: knownAdapters
 };
 
-},{"../utils.js":"8iYhQ","./http.js":"h6tfk","./xhr.js":"kUxiM","../core/AxiosError.js":"lAedo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kUxiM":[function(require,module,exports) {
+},{"../utils.js":"5By4s","./http.js":"aFlee","./xhr.js":"ldm57","../core/AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ldm57":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./../utils.js");
@@ -4486,7 +4490,7 @@ exports.default = isXHRAdapterSupported && function(config) {
     });
 };
 
-},{"./../utils.js":"8iYhQ","./../core/settle.js":"ntJ4m","./../helpers/cookies.js":"cXIO2","./../helpers/buildURL.js":"1NZ5w","../core/buildFullPath.js":"ep9XH","./../helpers/isURLSameOrigin.js":"4ZMRA","../defaults/transitional.js":"h7kye","../core/AxiosError.js":"lAedo","../cancel/CanceledError.js":"3EbmH","../helpers/parseProtocol.js":"OBlQC","../platform/index.js":"gU7QQ","../core/AxiosHeaders.js":"ak5DP","../helpers/speedometer.js":"hva7x","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ntJ4m":[function(require,module,exports) {
+},{"./../utils.js":"5By4s","./../core/settle.js":"dD9aC","./../helpers/cookies.js":"4WJjt","./../helpers/buildURL.js":"3bwC2","../core/buildFullPath.js":"1I5TW","./../helpers/isURLSameOrigin.js":"lxXtv","../defaults/transitional.js":"lM32f","../core/AxiosError.js":"3u8Tl","../cancel/CanceledError.js":"9PwCG","../helpers/parseProtocol.js":"7NfWU","../platform/index.js":"7tDev","../core/AxiosHeaders.js":"cgSSx","../helpers/speedometer.js":"gQeo1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dD9aC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>settle);
@@ -4502,7 +4506,7 @@ function settle(resolve, reject, response) {
     ][Math.floor(response.status / 100) - 4], response.config, response.request, response));
 }
 
-},{"./AxiosError.js":"lAedo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cXIO2":[function(require,module,exports) {
+},{"./AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4WJjt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./../utils.js");
@@ -4541,7 +4545,7 @@ function nonStandardBrowserEnv() {
     };
 }();
 
-},{"./../utils.js":"8iYhQ","../platform/index.js":"gU7QQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ep9XH":[function(require,module,exports) {
+},{"./../utils.js":"5By4s","../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1I5TW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>buildFullPath);
@@ -4555,7 +4559,7 @@ function buildFullPath(baseURL, requestedURL) {
     return requestedURL;
 }
 
-},{"../helpers/isAbsoluteURL.js":"ekOQH","../helpers/combineURLs.js":"2XKb6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ekOQH":[function(require,module,exports) {
+},{"../helpers/isAbsoluteURL.js":"jD6NM","../helpers/combineURLs.js":"brOWK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jD6NM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>isAbsoluteURL);
@@ -4567,7 +4571,7 @@ function isAbsoluteURL(url) {
     return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2XKb6":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"brOWK":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>combineURLs);
@@ -4576,7 +4580,7 @@ function combineURLs(baseURL, relativeURL) {
     return relativeURL ? baseURL.replace(/\/+$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4ZMRA":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lxXtv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./../utils.js");
@@ -4632,7 +4636,7 @@ function nonStandardBrowserEnv() {
     };
 }();
 
-},{"./../utils.js":"8iYhQ","../platform/index.js":"gU7QQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"OBlQC":[function(require,module,exports) {
+},{"./../utils.js":"5By4s","../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7NfWU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>parseProtocol);
@@ -4642,7 +4646,7 @@ function parseProtocol(url) {
     return match && match[1] || "";
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hva7x":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gQeo1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 "use strict";
@@ -4680,7 +4684,7 @@ parcelHelpers.defineInteropFlag(exports);
 }
 exports.default = speedometer;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"knuEM":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b85oP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>mergeConfig);
@@ -4759,7 +4763,7 @@ function mergeConfig(config1, config2) {
     return config;
 }
 
-},{"../utils.js":"8iYhQ","./AxiosHeaders.js":"ak5DP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iuFRD":[function(require,module,exports) {
+},{"../utils.js":"5By4s","./AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9vgkY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _dataJs = require("../env/data.js");
@@ -4833,13 +4837,13 @@ exports.default = {
     validators
 };
 
-},{"../env/data.js":"5Nrdw","../core/AxiosError.js":"lAedo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5Nrdw":[function(require,module,exports) {
+},{"../env/data.js":"h29L9","../core/AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h29L9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "VERSION", ()=>VERSION);
-const VERSION = "1.4.0";
+const VERSION = "1.5.0";
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9aT1c":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"45wzn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _canceledErrorJs = require("./CanceledError.js");
@@ -4926,7 +4930,7 @@ var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
 }
 exports.default = CancelToken;
 
-},{"./CanceledError.js":"3EbmH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8OQwS":[function(require,module,exports) {
+},{"./CanceledError.js":"9PwCG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dyQ8N":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>spread);
@@ -4937,7 +4941,7 @@ function spread(callback) {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2gw1T":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eyiLq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>isAxiosError);
@@ -4948,7 +4952,7 @@ function isAxiosError(payload) {
     return (0, _utilsJsDefault.default).isObject(payload) && payload.isAxiosError === true;
 }
 
-},{"./../utils.js":"8iYhQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"0fvB3":[function(require,module,exports) {
+},{"./../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fdR61":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const HttpStatusCode = {

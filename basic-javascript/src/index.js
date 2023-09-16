@@ -1,11 +1,11 @@
 const { connect, disconnect } = require('diarupt');
 const axios = require('axios').default;
 
-video = document.getElementById('ai-video');
-status_node = document.getElementById('status');
-btn = document.getElementById('start');
+let video = document.getElementById('ai-video');
+let status_node = document.getElementById('status');
+let btn = document.getElementById('start');
 
-DIARUPT_API = 'https://engine.diarupt.ai';
+const DIARUPT_API = 'https://engine.diarupt.ai';
 
 get_media_stream = async () => {
     if (navigator.mediaDevices === undefined || navigator.mediaDevices.getUserMedia === undefined) {
@@ -31,13 +31,13 @@ get_media_stream = async () => {
 const start = async () => {
     try {
         status_node.innerHTML = 'Connecting...';
-        stream = await get_media_stream();
+        const stream = await get_media_stream();
         /**
        * WARNING: This request should be made from your backend
        * to avoid exposing your API key
        */
 
-        options = {
+        const options = {
             /**
              * full list of available profiles can be retrieve 
              * from /faces endpoint.
@@ -71,7 +71,7 @@ Your Name is Sarah`,
                 }
             })
 
-        sid = res.data.session_id;
+        const sid = res.data.session_id;
 
         await connect(
             sid,
